@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TaskIT</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="text-center mt-5">
+	<h1 class="h1 mb-2 font-weight-bold">TaskIT</h1>
+	<img class="w-25 h-25" src="{{ url_for('static', filename='img/checklist.png') }}">
+	<h2 class="h3 mb-3 mt-3 font-weight-normal">Ticket Management System</h2>
+	<p class="font-italic">( TaskIT is a demo project and is not to be used in any critical capacity )</p>
+</div>
+{% endblock %}

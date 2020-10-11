@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>TaskIT</title>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="{{ url_for('static', filename='js/drawcharts.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="row mx-3 mt-4">
+
+<div class="col-sm-6 my-1">
+    <div class="card">
+	<h5 class="card-title text-center mt-2">Open Issues by Priority Level</h5>
+	<div class="card-body mx-auto">
+	<div id="priority_chart"></div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 my-1">
+    <div class="card">
+	<h5 class="card-title text-center mt-2">Tickets by Status</h5>
+        <div class="card-body mx-auto">
+	<div id="breakdown_chart"></div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 my-1">
+    <div class="card">
+	<h5 class="card-title text-center mt-2"># of Issues This Week</h5>
+        <div class="card-body mx-auto">
+	<div id="by_week_chart"></div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 my-1">
+    <div class="card">
+	<h5 class="card-title text-center mt-2">SLA Violations</h5>
+        <div class="card-body mx-auto">
+	<div id="violations_chart"></div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

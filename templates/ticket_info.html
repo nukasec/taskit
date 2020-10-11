@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>TaskIT</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="mx-5 my-3">
+	<a class="pl-1 font-weight-bold" href="/tickets">Go Back</a>
+</div>
+
+<div class="card mx-5 my-1">
+	<div class="card-header font-weight-bold float-left">{{ticket.summary}}</div>
+	<div class="card-body">
+	<table class="mb-3 w-100">
+	<tr>
+	<td>
+		{% if (ticket.date_closed != "Open") and (ticket.date_closed != "None") %}
+			<form method="POST" action="./reopen_ticket">
+				<input type="hidden" value="{{ticket.id}}" name="ticket_id">
+				<input class="text-info text-black" type="submit" name="close_ticket" value="REOPEN Ticket">
+			</form>
+		{% else %}
+			<form method="POST" action="./close_ticket">
+				<input type="hidden" value="{{ticket.id}}" name="ticket_id">
+				<input type="submit" name="close_ticket" value="Close Ticket">
+			</form>
+		{% endif %}
+	</td>
+	<td>
+			<form method="POST" action="./delete_ticket">
+				<td><input type="hidden" value="{{ticket.id}}" name="ticket_id">
+				<td><input class="text-danger float-right" type="submit" name="close_ticket" value="DELETE">
+			</form>
+	</td>
+	</tr>
+	</table>
+
+		<table class="table table-sm">
+			<tbody>
+			<tr><td>
+				Priority Level: {{ticket.priority}}
+				<br>Submitted by: {{ticket.employee}}
+				<br>Date Submitted: {{ticket.date_created}}
+				<br>Date Closed: {{ticket.date_closed}}
+			</td></tr>
+			<tr><td>{{ticket.issue}}</td></tr>
+			<tbody>
+		</table>
+	</div>
+</div>
+<div class="card mx-5 my-4">
+	<div class="card-header">Technician Notes:</div>
+	<div class="card-body">
+		<form method="POST" action="./update_notes">
+			<input type="hidden" value="{{ticket.id}}" name="ticket_id">
+			<input type="submit" value="Update">
+			<textarea class="form-control mt-3" name="issue_notes" id="issue_notes" rows="7" placeholder="Add notes here.">{{ticket.notes}}</textarea>
+		</form
+	</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
